@@ -1,6 +1,6 @@
 <template>
   <div class="app-container">
-    <aside>
+    <aside v-show="show" id="inner-step-1">
       The guide page is useful for some people who entered the project for the first time. You can briefly introduce the
       features of the project. Demo is based on
       <a href="https://github.com/kamranahmedse/driver.js" target="_blank">driver.js.</a>
@@ -14,21 +14,25 @@
 <script>
 import Driver from 'driver.js' // import driver.js
 import 'driver.js/dist/driver.min.css' // import driver.js css
-import steps from './steps'
-
+import getSteps from './steps'
+let vm = null
 export default {
   name: 'Guide',
   data() {
     return {
+      show: false,
       driver: null
     }
   },
   mounted() {
-    this.driver = new Driver()
+    vm = this
+    vm.driver = new Driver({
+      opacity: 0.5
+    })
   },
   methods: {
     guide() {
-      this.driver.defineSteps(steps)
+      this.driver.defineSteps(getSteps(vm))
       this.driver.start()
     }
   }
