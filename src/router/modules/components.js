@@ -25,6 +25,12 @@ const componentsRouter = {
       meta: { title: 'Markdown' }
     },
     {
+      path: 'sql-editor',
+      component: () => import('@/views/components-demo/sql-editor'),
+      name: 'SQLEditorDemo',
+      meta: { title: 'SQL Editor' }
+    },
+    {
       path: 'json-editor',
       component: () => import('@/views/components-demo/json-editor'),
       name: 'JsonEditorDemo',
