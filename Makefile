@@ -1,18 +1,18 @@
 restart:
 	git pull origin master
 	cnpm install
-	npm run build
+	npm run build:prod
 	docker rm -f ele-admin
 	docker rmi ele-admin:latest
 	docker build -t ele-admin:latest  .
-	docker run -d -p 8080:80 --name ele-admin ele-admin:latest
+	docker run -d -p 8081:80 --name ele-admin ele-admin:latest
 
 start:
 	git pull origin master
 	cnpm install
-	npm run build
+	npm run build:prod
 	docker build -t ele-admin:latest  .
-	docker run -d -p 8080:80 --name ele-admin ele-admin:latest
+	docker run -d -p 8081:80 --name ele-admin ele-admin:latest
 rm:
 	docker rm -f ele-admin
 rmi:
