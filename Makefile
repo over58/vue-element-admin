@@ -1,5 +1,5 @@
 restart:
-	git pull git@github.com:xuyongchaos/ele-admin-webhook.git master
+	git pull origin master
 	cnpm install
 	npm run build
 	docker rm -f ele-admin
@@ -8,7 +8,7 @@ restart:
 	docker run -d -p 8080:80 --name ele-admin ele-admin:latest
 
 start:
-	git pull git@github.com:xuyongchaos/ele-admin-webhook.git master
+	git pull origin master
 	cnpm install
 	npm run build
 	docker build -t ele-admin:latest  .
@@ -20,8 +20,8 @@ rmi:
 commit-update:
 	git add .
 	git commit -m 'update'
-	git push git@github.com:xuyongchaos/ele-admin-webhook.git master
+	git push origin master
 commit-add:
 	git add .
 	git commit -m 'add'
-	git push git@github.com:xuyongchaos/ele-admin-webhook.git master
+	git push origin master
