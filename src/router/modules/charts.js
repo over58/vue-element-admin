@@ -41,6 +41,12 @@ const chartsRouter = {
       component: () => import('@/views/charts/cytoscape'),
       name: 'cytoscape',
       meta: { title: 'cytoscape', noCache: true }
+    },
+    {
+      path: 'echarts',
+      component: () => import('@/views/charts/echarts'),
+      name: 'echarts',
+      meta: { title: 'echarts', noCache: true }
     }
   ]
 }

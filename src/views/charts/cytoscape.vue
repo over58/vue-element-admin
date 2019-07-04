@@ -1,6 +1,29 @@
 <template>
   <div class="container">
-    <div id="cy" />
+    <el-row>
+      <el-col :span="18">
+        <div id="cy" />
+      </el-col>
+      <el-col :span="6">
+        <el-card :body-style="{ padding: '10px' }">
+          <div slot="header">
+            <span>节点信息</span>
+          </div>
+          <!-- card body -->
+          <el-form :model="node" label-width="80px">
+            <el-form-item label="name">
+              {{ node.name }}
+            </el-form-item>
+            <el-form-item label="value">
+              {{ node.value }}
+            </el-form-item>
+
+          </el-form>
+
+        </el-card>
+
+      </el-col>
+    </el-row>
   </div>
 </template>
 
@@ -29,7 +52,11 @@ export default {
   },
   data() {
     return {
-      tippyInstance: null
+      tippyInstance: null,
+      node: {
+        name: '',
+        value: ''
+      }
     }
   },
   computed: {
@@ -68,9 +95,17 @@ export default {
           {
             selector: 'node',
             style: {
-              'content': 'data(name)'
-              // 'width': 'mapData(size, 0, 1.0, 40, 60)',
+              shape: 'round-rectangle', // rectangle vee pentagon
+              content: function(ele) {
+                const data = ele.data()
+                return `${data.name}`
+              },
+              // 'width': 'mapData(size, 0, 1.0, 10, 40)',
               // 'height': 'mapData(size, 0, 1.0, 40, 60)'
+              'text-valign': 'center',
+              'text-halign': 'center',
+              width: 100,
+              height: 60
               // 'background-color': 'data(color)'
             }
           },
@@ -83,6 +118,7 @@ export default {
               // 'target-arrow-color': 'data(colour)',
               'line-color': 'data(colour)',
               // 'width': 'mapData(width, 0, 1.0, 1, 3)',
+              width: 0.8,
               // 'label': 'data(info)'
               'control-point-distances': [40, -40],
               'control-point-weights': [0.25, 0.75],
@@ -168,31 +204,33 @@ export default {
       })
 
       // edge添加事件
-      cy.on('tap', 'edge', function(evt) {
-        var node = evt.target
-        if (vm.tippyInstance) {
-          vm.tippyInstance.hide()
-          vm.tippyInstance.destroy()
-        }
-        vm.makeTippy(node)
-        vm.tippyInstance.show()
-      })
+      // cy.on('tap', 'edge', function(evt) {
+      //   var node = evt.target
+      //   if (vm.tippyInstance) {
+      //     vm.tippyInstance.hide()
+      //     vm.tippyInstance.destroy()
+      //   }
+      //   vm.makeTippy(node)
+      //   vm.tippyInstance.show()
+      // })
 
       // node 添加事件
-      cy.on('tap', 'edge', function(evt) {
-        var node = evt.target
-        if (vm.tippyInstance) {
-          vm.tippyInstance.hide()
-          vm.tippyInstance.destroy()
-        }
-        vm.makeTippy(node)
-        vm.tippyInstance.show()
-      })
+      // cy.on('tap', 'edge', function(evt) {
+      //   var node = evt.target
+      //   if (vm.tippyInstance) {
+      //     vm.tippyInstance.hide()
+      //     vm.tippyInstance.destroy()
+      //   }
+      //   vm.makeTippy(node)
+      //   vm.tippyInstance.show()
+      // })
 
       cy.on('tap', 'node', function(evt) {
         var node = evt.target
-        node.incomers('edge').toggleClass('edge-in-highlight')
-        node.edgesWith('*').toggleClass('edge-out-highlight')
+        // node.incomers('edge').toggleClass('edge-in-highlight')
+        // node.edgesWith('*').toggleClass('edge-out-highlight')
+        vm.node = node.data()
+        console.log(node.data())
       })
     },
     makeTippy(node) {
@@ -222,7 +260,7 @@ export default {
   padding: 10px;
 }
 #cy{
-  height: 100%;
+  height: 500px;
   border: solid 1px #aaa;
 }
 </style>
