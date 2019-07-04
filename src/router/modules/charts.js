@@ -35,6 +35,12 @@ const chartsRouter = {
       component: () => import('@/views/charts/highcharts'),
       name: 'highcharts',
       meta: { title: 'Highcharts Chart', noCache: true }
+    },
+    {
+      path: 'cytoscape',
+      component: () => import('@/views/charts/cytoscape'),
+      name: 'cytoscape',
+      meta: { title: 'cytoscape', noCache: true }
     }
   ]
 }
