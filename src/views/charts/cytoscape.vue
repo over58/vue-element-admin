@@ -5,7 +5,7 @@
         <div id="cy" />
       </el-col>
       <el-col :span="6">
-        <el-card :body-style="{ padding: '10px' }">
+        <el-card :body-style="{ padding: '10px', height: '440px' }">
           <div slot="header">
             <span>节点信息</span>
           </div>
@@ -14,8 +14,11 @@
             <el-form-item label="name">
               {{ node.name }}
             </el-form-item>
-            <el-form-item label="value">
-              {{ node.value }}
+            <el-form-item label="id">
+              {{ node.id }}
+            </el-form-item>
+            <el-form-item label="额外信息">
+              节点的其他的信息
             </el-form-item>
 
           </el-form>
@@ -55,7 +58,7 @@ export default {
       tippyInstance: null,
       node: {
         name: '',
-        value: ''
+        id: ''
       }
     }
   },
