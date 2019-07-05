@@ -47,10 +47,10 @@ export default {
             label: {
               normal: {
                 position: 'top',
-                rotate: -90,
+                // rotate: -90,
                 verticalAlign: 'middle',
-                align: 'right',
-                fontSize: 9
+                align: 'center',
+                fontSize: 20
               }
             },
 
@@ -60,7 +60,8 @@ export default {
                   position: 'bottom',
                   rotate: -90,
                   verticalAlign: 'middle',
-                  align: 'left'
+                  align: 'left',
+                  fontSize: 20
                 }
               }
             },
