@@ -1,6 +1,6 @@
 # 变量定义
 Port := 9000
-Repos :=  ele-admin
+Repos :=  vue-element-admin
 restart:
 	git pull origin master
 	docker rm -f ${Repos}
