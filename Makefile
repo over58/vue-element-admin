@@ -1,9 +1,10 @@
 # 变量定义
 Port := 8081
-Repos :=  vue-element-admin
+Repos := ele-admin
 restart:
 	git pull origin master
-  cnpm install
+	yarn install
+	npm run build
 	docker rm -f ${Repos}
 	docker rmi ${Repos}:latest
 	docker build -t ${Repos}:latest  .
@@ -11,7 +12,8 @@ restart:
 
 start:
 	git pull origin master
-  cnpm install
+	yarn install
+	npm run build
 	docker build -t ${Repos}:latest  .
 	docker run -d -p ${Port}:80 --name ${Repos} ${Repos}:latest
 rm:
