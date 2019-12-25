@@ -1,6 +1,6 @@
 # 变量定义
 Port := 8081
-Repos := ele-admin
+Repos := vue-element-admin
 restart:
 	git pull origin master
 	yarn install
