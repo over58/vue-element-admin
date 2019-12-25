@@ -3,6 +3,7 @@ Port := 8081
 Repos :=  vue-element-admin
 restart:
 	git pull origin master
+  cnpm install
 	docker rm -f ${Repos}
 	docker rmi ${Repos}:latest
 	docker build -t ${Repos}:latest  .
@@ -10,9 +11,10 @@ restart:
 
 start:
 	git pull origin master
+  cnpm install
 	docker build -t ${Repos}:latest  .
 	docker run -d -p ${Port}:80 --name ${Repos} ${Repos}:latest
-rm:	
+rm:
 	docker rm -f ${Repos}
 rmi:
 	docker rmi ${Repos}:latest
