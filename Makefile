@@ -4,7 +4,7 @@ Repos := vue-element-admin
 restart:
 	git pull origin master
 	yarn install
-	npm run build
+	npm run build:prod
 	docker rm -f ${Repos}
 	docker rmi ${Repos}:latest
 	docker build -t ${Repos}:latest  .
@@ -13,7 +13,7 @@ restart:
 start:
 	git pull origin master
 	yarn install
-	npm run build
+	npm run build:prod
 	docker build -t ${Repos}:latest  .
 	docker run -d -p ${Port}:80 --name ${Repos} ${Repos}:latest
 rm:
